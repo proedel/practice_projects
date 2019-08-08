@@ -3,6 +3,7 @@
 import datetime as dt
 import pandas as pd
 import praw
+from getpass import getpass
 
 def get_date(created):
     return dt.datetime.fromtimestamp(created)
@@ -10,8 +11,8 @@ def get_date(created):
 reddit = praw.Reddit(client_id = 'ZWqh3Vq6QFGouQ', \
                      client_secret= 'yd2mu-7ZG9TvjJVoxT9giOvB4yE', \
                      user_agent= 'Goin Phisin', \
-                     username= 'hippybongstocking', \
-                     password='greenlantern95')
+                     # username= put user name here \
+                     password=getpass()
 
 subreddit = reddit.subreddit('Phish')
 sub1 = reddit.subreddit('phishcodes')
