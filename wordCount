@@ -1,0 +1,16 @@
+def word_count(string):
+    words = string.lower().split()
+    count = dict()
+    for word in words:
+        if word in count:
+            count[word] += 1
+            
+        else:
+            count[word] = 1
+            
+        
+    print(string)
+    print(count)
+
+
+word_count("Hello Hello my name is is is is is Payton")
