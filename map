@@ -1,0 +1,13 @@
+
+#! python3
+import webbrowser, sys, pyperclip
+
+if len(sys.argv) > 1:
+    #Get Address from CMD
+    address = '+'.join(sys.argv[1:])
+else:
+    print("Usage: mapIt.py 123 Seasame Street")
+    
+
+webbrowser.open('https://www.google.com/maps/place/' + address)
+
