@@ -1,0 +1,19 @@
+#Start up Computer programs needed in the morning.
+
+import sys
+import requests
+import webbrowser
+from getpass import getpass
+from selenium import webdriver
+
+def start_chrome():
+    wb = webbrowser
+    JIRA = "https://jira.varsityspirit.com/projects/VSSD/queues/custom/46"
+    wb.open(JIRA)
+    FIN = 'https://memap-ccxpub.vsc.com:8445/desktop/container/landing.jsp?locale=en_US'
+    user = input("Username:  ")
+    password = getpass()
+    
+wb.open_new_tab(FIN)    
+start_chrome()    
+
