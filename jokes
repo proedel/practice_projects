@@ -1,0 +1,10 @@
+import requests
+import json
+
+
+def tell_joke():
+    URL = "https://icanhazdadjoke.com"
+    response = requests.get(URL, headers={"Accept":"text/plain"})
+    print(response.text)
+    input()
+tell_joke()
