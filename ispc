@@ -5,7 +5,7 @@ from selenium import webdriver
 
 #Opens ISPC and Logs in 
 user = 'proedel'
-pswd = 'green95!'
+pswd = 'getpass()'
 URL = 'https://ispc-public.varsityspirit.com/'
 wb = webbrowser
 driver = webdriver.Chrome()
