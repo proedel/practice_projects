@@ -1,0 +1,49 @@
+#! python 3
+
+import datetime as dt
+import praw
+from getpass import getpass
+import webbrowser as wb
+
+
+reddit = praw.Reddit(client_id = 'ZWqh3Vq6QFGouQ', \
+                     client_secret= 'yd2mu-7ZG9TvjJVoxT9giOvB4yE', \
+                     user_agent= 'Goin Phisin', \
+                     #put username here
+                     username = '', \
+                     password=getpass())
+
+#Can fille this in with any subreddit
+subreddit = reddit.subreddit("phishcodes")
+
+topics_dict = { "title":[], \
+                "score":[], \
+                "id":[], \
+                "num_comments":[], \
+                "created":[], \
+                "selftext":[], \
+                "url":[]}
+
+
+for submission in subreddit.new(limit =5):
+    topics_dict["title"].append(submission.title)
+    topics_dict["score"].append(submission.score)
+    topics_dict["id"].append(submission.id)
+    topics_dict["num_comments"].append(submission.num_comments)
+    topics_dict["selftext"].append(submission.selftext)
+    topics_dict["url"].append(submission.url)
+
+#This will open 5 tabs in your current web browser and will take you to the picture URL.
+for submission in subreddit.new(limit = 5):
+    print(submission.title)
+    print(submission.url)
+    print(submission.selftext)
+
+
+openPages = input("Would you like to open pages? Y/N  ")
+if(openPages[0].lower() == 'y'):
+    for submission in subreddit.new(limit = 5):
+        wb.open(submission.url)
+        input("Press enter for the next url")
+
+        
