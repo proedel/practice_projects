@@ -1,0 +1,65 @@
+#Guess That Number: A guessing game
+
+import random
+import sys
+
+def start_game():
+    myname = input("What is your name?  ")
+    game = input(f"Hello {myname}! Do you want to play a game?  ")
+
+    answer = random.randint(1,2)
+    guesses = 0
+    while guesses < 6:
+        guess = int(input("Guess a number:  "))
+        if answer == guess:
+            print (f"Fuck! {myname}, you are good that was the answer")
+            again = input("Do you want to play again  ")
+            if again[0].lower()== 'y':
+                
+                print(f"Alright {myname}, get ready to be a bitch!")
+                start_game2()
+            else:
+                sys.exit()
+            if guesses < 1:
+                    print("You go it in one guess")
+            elif guesses == 6:
+                    print("Nope, the number I was thinking of was {}".format(number))
+        elif answer > guess:
+            print("Guess higher Bitch!")
+            guesses += 1
+            
+        elif guess > answer:
+            print("Bruh what the fuck are you thinking! Guess lower")
+            guesses +=1
+        else:
+            print("You got it in {} guessess".format(guesses + 1))
+        
+def start_game2():
+    
+    answer = random.randint(1,2)
+    guesses = 0
+    while guesses < 6:
+        guess = int(input("Guess a number:  "))
+        if answer == guess:
+            print(f"Fuck! {myname}, you are good, that was the answer...")
+            another = input("Do you want to play again?  ")
+            if another[0].lower() == 'y':
+                start_game2()
+            else:
+                sys.exit()
+        if guesses < 1:
+                print("You go it in one guess")
+        elif guesses == 6:
+                print("Nope, the number I was thinking of was {}".format(number))
+        
+        elif answer > guess:
+            print("Guess higher Bitch!")
+            guesses += 1
+            
+        elif guess > answer:
+            print("Bruh what the fuck are you thinking! Guess lower")
+            guesses +=1
+        else:
+            print("You got it in {} guessess".format(guesses + 1))    
+
+start_game()
