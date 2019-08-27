@@ -1,28 +1,27 @@
 #! python 3
 
 import datetime as dt
-import pandas as pd
 import praw
 from getpass import getpass
+import webbrowser as wb
 
-def get_date(created):
-    return dt.datetime.fromtimestamp(created)
 
 reddit = praw.Reddit(client_id = 'ZWqh3Vq6QFGouQ', \
                      client_secret= 'yd2mu-7ZG9TvjJVoxT9giOvB4yE', \
                      user_agent= 'Goin Phisin', \
-                     # username= put user name here \
-                     password=getpass()
+                     #username = '', \
+                     password=getpass())
 
-subreddit = reddit.subreddit('Phish')
-sub1 = reddit.subreddit('phishcodes')
+#Can fille this in with any subreddit
+subreddit = reddit.subreddit("earthporn")
 
 topics_dict = { "title":[], \
                 "score":[], \
                 "id":[], \
                 "num_comments":[], \
                 "created":[], \
-                "selftext":[]}
+                "selftext":[], \
+                "url":[]}
 
 
 for submission in subreddit.new(limit =5):
@@ -31,14 +30,12 @@ for submission in subreddit.new(limit =5):
     topics_dict["id"].append(submission.id)
     topics_dict["num_comments"].append(submission.num_comments)
     topics_dict["selftext"].append(submission.selftext)
+    topics_dict["url"].append(submission.url)
 
-topics_data = pd.DataFrame(topics_dict)
-topics_data
-_timestamp = topics_data["created"].apply(get_date)
-topics_data = topics_data.assign(timestamp = _timestamp)
+#This will open 5 tabs in your current web browser and will take you to the picture URL.
+for submission in subreddit.new(limit = 5):
+    wb.open(submission.url)
 
-#for submission in sub1.new(limit =5):
-    #print ("FROM R\PHISHCODE")
-    #print(submission.title, submission.created_utc)
-    #print("\n")
 
+
+    
