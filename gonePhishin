@@ -32,10 +32,18 @@ for submission in subreddit.new(limit =5):
     topics_dict["selftext"].append(submission.selftext)
     topics_dict["url"].append(submission.url)
 
+
 #This will open 5 tabs in your current web browser and will take you to the picture URL.
 for submission in subreddit.new(limit = 5):
-    wb.open(submission.url)
+    print(submission.title)
+    print(submission.url)
+    print(submission.selftext)
 
 
+openPages = input("Would you like to open pages? Y/N  ")
+if(openPages[0].lower() == 'y'):
+    for submission in subreddit.new(limit = 5):
+        wb.open(submission.url)
+        input("Press enter for the next url")
 
     
